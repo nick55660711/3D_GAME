@@ -32,9 +32,13 @@ public class Enemy : MonoBehaviour
             SCSpeed = 0;
             GetComponent<Animator>().SetBool("Atk", true);
         }
-
-
     }
+
+
+
+
+
+
      private void OnTriggerExit(Collider other)
     {
         
@@ -47,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     }
 
+
     public void Damage(float damage,float dis)
     {
         SCHP -= damage;
@@ -57,7 +62,9 @@ public class Enemy : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Dead");
             SCSpeed = 0;
             GetComponent<Collider>().enabled = false;
+            FindObjectOfType<GM>().DeadCount();
             gameObject.tag = "Untagged";
+            
             Destroy(gameObject,3f);
         }
 
@@ -67,7 +74,13 @@ public class Enemy : MonoBehaviour
 
 
 
+    public void AttackPlayer()
+    {
 
+        FindObjectOfType<Player>().Hurt(10f);
+
+
+    }
 
 
 
