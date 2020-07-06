@@ -15,14 +15,62 @@ public class GM : MonoBehaviour
     int Number;
     public GameObject PauseObject;
     public Image MonsterL_Bar;
+
+    #region 大招
     public Image Magic_Bar;
     public float MagicMax;
     public float MagicSC;
+    #endregion
 
+    #region 關卡
     public string LevelIDstring;
     int LevelID;
+    //關卡圖片
     public Image[] LevelImage;
+    public Image[] GameOverLevelImage;
+    #endregion
+
+    #region GameOver
+    string RewardScoreString;
+    int GameOverScore;
+    string GameOverScoreString;
+    public GameObject RewardScoreObject;
+    public GameObject RewardScoreGridObject;
+    public GameObject GameOverScoreObject;
+    public GameObject GameOverScoreGridObject;
+    public List<Image> RewardScoreImage;
+    public List<Image> GameOverScoreImage;
+
+
+    public Button NextGame_B;
+
+
+    #endregion
+
+
+    #region 分數
+    int score;
+    string scoreString;
+    //分數圖片
+    public List<Image> ScoreImage;
+
+    string SaveTotalScore = "SaveTotalScore";
+    //分數物件
+    public GameObject ScoreObject;
+    //放置分數位置
+    public GameObject ScoreGridObject;
+
+    #endregion
+
+    public bool isWin;
+
+    public GameObject GameOverUI;
+
+    public Sprite WinSprite, LosrSpirte;
+    public Image ResultImage;
+
     public Sprite[] NumberSprite;
+
 
     public void CreateEnemy()
     {
@@ -48,18 +96,46 @@ public class GM : MonoBehaviour
     public void DeadCount()
     {
         DeadNumber ++;
+
         MonsterL_Bar.fillAmount = (MaxNumber - DeadNumber) / MaxNumber;
 
     }
 
-
-    public void CreateBoss()
+    
+    public void FinalScore(int AddScore) 
     {
+        score += AddScore;
+
+        scoreString = score.ToString();
+
+        PlayerPrefs.SetInt(SaveTotalScore, score);
+
        
 
+        for (int i = ScoreImage.Count; i < scoreString.Length; i++)
+        {
+            GameObject ScoreObjectPrefab = Instantiate(ScoreObject) as GameObject;
+            ScoreObjectPrefab.transform.SetParent(ScoreGridObject.transform);
+            ScoreImage.Add(ScoreObjectPrefab.GetComponent<Image>());
+        }
 
-
+        
+        for (int i = 1; i < scoreString.Length; i++)
+        {
+            ScoreImage[scoreString.Length-i].sprite = NumberSprite[int.Parse(scoreString.Substring(i-1, 1))];
+        }
+        
+        /*
+        for (int i = 0; i < scoreString.Length; i++)
+        {
+            ScoreImage[i].sprite = NumberSprite[int.Parse(scoreString.Substring(i, 1))];
+        }
+        */
     }
+
+
+
+   
 
     public void PauseGame()
     {
@@ -68,6 +144,66 @@ public class GM : MonoBehaviour
         PauseObject.SetActive(true);
     }
 
+    public void GameOver(int Credit)
+    {
+        GameOverUI.SetActive(true);
+        Time.timeScale = 0;
+
+        if (isWin)
+        {
+            ResultImage.sprite = WinSprite;
+            NextGame_B.interactable = true;
+        }
+        else
+        {
+            ResultImage.sprite = LosrSpirte;
+            NextGame_B.interactable = false;
+        }
+
+        GameOverLevelImage[0].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(0, 1))];
+        GameOverLevelImage[1].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(1, 1))];
+
+        GameOverScore = score + Credit;
+        GameOverScoreString = GameOverScore.ToString();
+        RewardScoreString = Credit.ToString();
+
+        for (int i =RewardScoreImage.Count; i < RewardScoreString.Length; i++)
+        {
+            GameObject RewardScorePrefab = Instantiate(ScoreObject) ;
+
+            RewardScorePrefab.transform.SetParent(RewardScoreGridObject.transform);
+
+            RewardScoreImage.Add(RewardScorePrefab.GetComponent<Image>());
+
+        }
+        for (int i = 0; i < RewardScoreString.Length; i++)
+        {
+            RewardScoreImage[i].sprite = NumberSprite[int.Parse(RewardScoreString.Substring(i, 1))];
+
+        }
+
+
+
+        for (int i = GameOverScoreImage.Count; i < GameOverScoreString.Length; i++)
+        {
+            GameObject GameOverScorePrefab = Instantiate(ScoreObject);
+
+            GameOverScorePrefab.transform.SetParent(GameOverScoreGridObject.transform);
+
+            GameOverScoreImage.Add(GameOverScorePrefab.GetComponent<Image>());
+
+        }
+
+
+
+        for (int i = 0; i < GameOverScoreString.Length; i++)
+        {
+            GameOverScoreImage[i].sprite = NumberSprite[int.Parse(GameOverScoreString.Substring(i, 1))];
+
+        }
+       
+
+    }
 
     public void Return()
     {
@@ -83,6 +219,20 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene("Menu");
 
     }
+    
+    public void ReStart()
+    {
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
+    }
+    
+    public void NextGame()
+    {
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
+    }
 
     private void Start()
     {
@@ -90,7 +240,7 @@ public class GM : MonoBehaviour
         InvokeRepeating("CreateEnemy", 0.2f, CreateTime);
 
         LevelID = int.Parse(LevelIDstring);
-
+        FinalScore(0);
 
         // 寫法1
         /*
@@ -111,9 +261,6 @@ public class GM : MonoBehaviour
         LevelImage[0].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(0,1))]; // 十位數   抓取子字串 SubString(字串開始位置,長度)  0是字串開頭的位置
         LevelImage[1].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(1,1))];
 
-        print(LevelIDstring.Substring(0, 1));
-        print(LevelIDstring.Substring(1, 1));
-        print(LevelIDstring.Substring(0, 2));
 
     }
 
@@ -125,6 +272,9 @@ public class GM : MonoBehaviour
         MagicSC = Mathf.Clamp(MagicSC, 0, MagicMax);
         Magic_Bar.fillAmount = MagicSC / MagicMax;
 
+
+
+      
     }
 
 

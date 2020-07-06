@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Enemy : MonoBehaviour
 {
     public float Speed;
@@ -52,24 +51,31 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void Damage(float damage,float dis)
+    public void Damage(float damage, float dis)
     {
         SCHP -= damage;
         SCHP = Mathf.Clamp(SCHP, 0, HP);
-        transform.position += new Vector3(0,0,dis);
-        if(SCHP <= 0)
+        transform.position += new Vector3(0, 0, dis);
+        if (SCHP <= 0)
         {
             GetComponent<Animator>().SetTrigger("Dead");
             SCSpeed = 0;
             GetComponent<Collider>().enabled = false;
             FindObjectOfType<GM>().DeadCount();
+
+
+            if (CompareTag("Enemy")) { FindObjectOfType<GM>().FinalScore(50); }
+            else
+            {
+                FindObjectOfType<GM>().FinalScore(1000);
+                FindObjectOfType<GM>().isWin = true;
+                FindObjectOfType<GM>().GameOver(3000);
+            }
+
+
             gameObject.tag = "Untagged";
-            
-            Destroy(gameObject,3f);
+            Destroy(gameObject, 3f);
         }
-
-
-
     }
 
 

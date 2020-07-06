@@ -37,7 +37,16 @@ public class Player : MonoBehaviour
     {
         SCHP -= atk;
         HP_Bar.fillAmount = SCHP / TotalHP;
+
+
+        if(HP_Bar.fillAmount == 0)
+        {
+            FindObjectOfType<GM>().isWin = false;
+            FindObjectOfType<GM>().GameOver(0);
+        }
+
         if (SCHP / TotalHP < 0.5) { Destroy(GameObject.FindGameObjectWithTag("NPC")); } 
+
     }
 
     public void PointerDownMagic()
