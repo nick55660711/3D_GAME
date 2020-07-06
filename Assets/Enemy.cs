@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
 
         FindObjectOfType<Player>().Hurt(10f);
+        if(CompareTag("Boss"))FindObjectOfType<Player>().Hurt(20f);
 
 
     }
