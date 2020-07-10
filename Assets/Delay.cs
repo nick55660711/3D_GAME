@@ -4,7 +4,11 @@ using System;
 
 public class Delay : MonoBehaviour
 {
-    
+
+    private void Start()
+    {
+        
+    }
 
 
 

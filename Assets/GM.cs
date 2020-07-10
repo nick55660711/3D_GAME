@@ -131,6 +131,8 @@ public class GM : MonoBehaviour
             ScoreImage[i].sprite = NumberSprite[int.Parse(scoreString.Substring(i, 1))];
         }
         */
+
+
     }
 
 
@@ -201,7 +203,13 @@ public class GM : MonoBehaviour
             GameOverScoreImage[i].sprite = NumberSprite[int.Parse(GameOverScoreString.Substring(i, 1))];
 
         }
-       
+
+
+
+        //將資料寫入Excel表單
+        ExcelWritter.ansList.Add(LevelIDstring);
+        ExcelWritter.ansList.Add(GameOverScoreString);
+        ExcelWritter.WriteExcel("SaveData", "Data");
 
     }
 
