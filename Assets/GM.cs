@@ -237,10 +237,12 @@ public class GM : MonoBehaviour
     
     public void NextGame()
     {
-
         Time.timeScale = 1;
         SceneManager.LoadScene("Game");
     }
+
+
+   
 
     private void Start()
     {
@@ -269,7 +271,7 @@ public class GM : MonoBehaviour
         LevelImage[0].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(0,1))]; // 十位數   抓取子字串 SubString(字串開始位置,長度)  0是字串開頭的位置
         LevelImage[1].sprite = NumberSprite[int.Parse(LevelIDstring.Substring(1,1))];
 
-
+      
     }
 
 

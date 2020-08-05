@@ -12,16 +12,17 @@ public class ReadExcel : MonoBehaviour
 {
 
     public string Excelname;
-    public List<String> ReadData;
+    public  List<String> ReadData;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Read();
+        
     }
 
     //讀取EXCEL表格內容
 
-    void Read()
+    void  Read()
     {
         // Excel路徑
         string path = Application.streamingAssetsPath + "/" + Excelname + ".xlsx";

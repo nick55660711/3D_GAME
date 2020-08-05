@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
 
-    bool SoundSwitch;
+    bool SoundSwitch = true;
+    public Image Sound_S;
+    public Sprite sound_ON; 
+    public Sprite sound_OFF; 
     public void StartButton()
     {
         SceneManager.LoadScene("Game");
@@ -20,9 +23,12 @@ public class Menu : MonoBehaviour
         public void SoundButton()
     {
         SoundSwitch = !SoundSwitch;
-        AudioListener.pause = SoundSwitch;
+        AudioListener.pause = !SoundSwitch;
+        if(SoundSwitch)
+        Sound_S.sprite = sound_ON;
+        else Sound_S.sprite = sound_OFF;
 
     }
-
+    
 
 }

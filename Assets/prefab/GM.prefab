@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &162214440035934028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 162214440035934027}
+  - component: {fileID: 162214440035934026}
+  m_Layer: 0
+  m_Name: GM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &162214440035934027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162214440035934028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.185413, y: 0.49495387, z: 8.902344}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162214440035934026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162214440035934028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf69ba3fb9e5254dab4592c5c527be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy1: {fileID: 8103320735967137574, guid: 7fdf1a70fcb625b4a90c7efda3c4187b, type: 3}
+  Boss: {fileID: 189875878833521357, guid: 6e74975f3bc09d44a96f8632a17a1394, type: 3}
+  EnemyCreatePoint: {fileID: 0}
+  CreateTime: 5
+  MaxNumber: 3
+  DeadNumber: 0
+  PauseObject: {fileID: 0}
+  MonsterL_Bar: {fileID: 0}
+  Magic_Bar: {fileID: 0}
+  MagicMax: 3
+  MagicSC: 0
+  LevelIDstring: 01
+  LevelImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  GameOverLevelImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  RewardScoreObject: {fileID: 1155118200569853708, guid: d8d27190794704841a05bcae1171f7b7,
+    type: 3}
+  RewardScoreGridObject: {fileID: 0}
+  GameOverScoreObject: {fileID: 1155118200569853708, guid: d8d27190794704841a05bcae1171f7b7,
+    type: 3}
+  GameOverScoreGridObject: {fileID: 0}
+  RewardScoreImage: []
+  GameOverScoreImage: []
+  NextGame_B: {fileID: 0}
+  ScoreImage: []
+  ScoreObject: {fileID: 1155118200569853708, guid: d8d27190794704841a05bcae1171f7b7,
+    type: 3}
+  ScoreGridObject: {fileID: 0}
+  isWin: 0
+  GameOverUI: {fileID: 0}
+  WinSprite: {fileID: 21300000, guid: 9ba05cc8ba2dc7949be226675b75426a, type: 3}
+  LosrSpirte: {fileID: 21300000, guid: cdb9363940e321d41a027186ae6eecc9, type: 3}
+  ResultImage: {fileID: 0}
+  NumberSprite:
+  - {fileID: 21300000, guid: aa84ce02cc7101f4eb28fc0d7d1f550a, type: 3}
+  - {fileID: 21300000, guid: 08960e968c6e3474e8c6425abaea773b, type: 3}
+  - {fileID: 21300000, guid: 706335a833168c84f812045f0e77f4f5, type: 3}
+  - {fileID: 21300000, guid: fc6a9b5f88c8cc943b8e08fd871d3ff6, type: 3}
+  - {fileID: 21300000, guid: 211f6ecf353b74f4d8c2cadbdd490920, type: 3}
+  - {fileID: 21300000, guid: 15a58b45a1eb05b468a770096a1470b2, type: 3}
+  - {fileID: 21300000, guid: aa174796cecb70948ac0cc386a77f1f4, type: 3}
+  - {fileID: 21300000, guid: 7428c6f7d5c5d7e4885cbcaee8e4b4a2, type: 3}
+  - {fileID: 21300000, guid: 1fb5e21ecc2d0484488b288e3fffe7ad, type: 3}
+  - {fileID: 21300000, guid: 7ccfa6f2dee7d87498857967db8dd08a, type: 3}
+  Data: {fileID: 0}
+  player1: {fileID: 0}

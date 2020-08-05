@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "875451552065",
+    "firebase_url": "https://reimjump.firebaseio.com",
+    "project_id": "reimjump",
+    "storage_bucket": "reimjump.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875451552065:android:2188c032c7a7cd08ae11c0",
+        "android_client_info": {
+          "package_name": "com.Reim.JumpGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875451552065-fk2nian4kb6u1kadv21tbkjpeg8pouad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvCa5Sful2OZ51wgUe72E4eN91Aop6jjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875451552065-fk2nian4kb6u1kadv21tbkjpeg8pouad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
